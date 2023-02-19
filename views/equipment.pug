@@ -1,0 +1,10 @@
+extends layout
+
+block content
+
+    h1=response.name 
+    p Equipment ID: #[span=response.eId]
+    p Available: #[span=response.isAvailable]
+
+    button Reserve 
+    button Report Damage

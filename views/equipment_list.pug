@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+    h1 Equipment List 
+
+    table 
+        tr 
+            th Equipment 
+            th Available?
+        each equipment in equipment_list 
+            tr 
+                td
+                    a(href=`/equipment/info/${equipment.eId}`) #{equipment.name}
+                td
+                    span #{equipment.isAvailable}
+        else 
+            p This gym has no available equipment

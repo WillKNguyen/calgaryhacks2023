@@ -4,12 +4,13 @@ const db = require('../models');
 const User = db.users;
 
 const getUser = async(req, res) => {
-    let email = req.params.email;
-    let response = await User.findOne({where: {Email: email}});
+    let username = req.body.username;
+    let password = req.body.password;
+    let response = await User.findOne({where: {Username: username, Password: password}});
     if (!response) {
         return res.status(400).send({ error: 'Users not found' });
     }
-    res.status(200).send(response);
+    res.redirect('/equipment/getmap');
 };
 
 const user_create_get = (req, res, next) => {

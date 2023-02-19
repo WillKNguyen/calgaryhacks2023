@@ -14,7 +14,7 @@ const getInfoById = async (req, res) => {
     if (!response) {
         return res.status(400).send({ error: 'Equipment id not found' });
     }
-    res.status(200).send(response);
+    res.status(200).render("equipment",{response: response});
 };
 
 const updateAvailability = async (req, res) => {
@@ -48,9 +48,14 @@ const updateUnderMaintenance = async (req, res) => {
     }
 }
 
+const getMap = async (req, res) =>{
+    let equipment_list = await equipment.findAll();
+    res.render('equipment_list', {title: "Equipment list", equipment_list: equipment_list})
+}
+
 module.exports = {
     getInfoById,
     getInfoAll,
     updateAvailability,
-    updateUnderMaintenance
+    updateUnderMaintenance, getMap
 }
