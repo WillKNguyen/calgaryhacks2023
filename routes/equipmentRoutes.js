@@ -1,0 +1,32 @@
+var express = require('express');
+var router = express.Router();
+const { getInfoById, getInfoAll, updateAvailability, updateUnderMaintenance } = require('../controllers/equipmentController');
+
+// Equipment Test
+router.get('/', function(req, res, next) {
+  res.send("return equipment stuff");
+});
+
+// Get status for all equipment
+router.get('/info/all', function(req, res) {
+    getInfoAll(req, res);
+  });
+
+// Get equipment status by eId
+router.get('/info/:eId', function(req, res) {
+    getInfoById(req, res);
+  });
+
+// Change equipment availability by eId
+router.put('/update_availability/:eId/:availability', function(req, res) {
+    updateAvailability(req, res);
+  });
+
+// Change equipment under_maintenance status by eId
+router.put('/update_maintenance/:eId/:underMaintenance', function(req, res) {
+    updateUnderMaintenance(req, res);
+  });
+
+
+
+module.exports = router;
