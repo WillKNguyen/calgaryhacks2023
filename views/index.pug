@@ -3,3 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  form(method='POST' action='')
+    div.form-group
+        //- label(for='username') Username:
+        input#username.form-control(type='text' placeholder='username' name='username' required='true')
+        p
+        //- label(for='password') Password:
+        input#password.form-control(type='text' placeholder='password' name='family_name' required='true' value=(undefined===author ? '' : author.family_name))
+        p
+        button Submit
+  div 
+    p Do not have an account? #[a(href="/users/register") Register ]
